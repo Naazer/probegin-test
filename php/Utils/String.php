@@ -28,7 +28,7 @@ class String
      * @return int Count of occurence
      * @throws \InvalidArgumentException
      */
-    public function countCharsOccurence(string $char): int
+    public function countCharOccurence(string $char): int
     {
         // @TODO: implement body and cover with tests
     }
