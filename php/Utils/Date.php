@@ -9,7 +9,7 @@ class Date
      *
      * @param  int $year    Year to consider
      * @param  int $querter Quarter to consider
-     * @retrun int Number of days
+     * @return int Number of days
      * @throws \InvalidArgumentException
     */
     public static function getDaysInQuarter(int $year, int $quarter): int

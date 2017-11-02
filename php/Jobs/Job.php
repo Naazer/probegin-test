@@ -28,8 +28,8 @@ interface Job
     /**
      * Update last check timestamp
      *
-     * @param int $timestamp UNIX timestamp
-     * @void
+     * @param  int $timestamp UNIX timestamp
+     * @return void
      */
     public function setChecked(int $timestamp): void;
 

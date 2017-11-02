@@ -10,8 +10,8 @@ class Maintenance
     /**
      * Clean the job (either postpone or delete depending on conditions)
      *
-     * @param Job $job A job to check
-     * @void
+     * @param  Job $job A job to check
+     * @return void
      */
     public function cleanup(Job $job): void
     {
