@@ -1,0 +1,20 @@
+{
+    "name": "root/php",
+    "description": "Probegin Test Assignments",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Constantine Karnasevych",
+            "email": "constantine.karnacevych@gmail.com"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^6.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "":"./"
+        }
+    }
+}

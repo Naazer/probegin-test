@@ -2,7 +2,7 @@
 
 namespace Utils;
 
-class String
+class Strings
 {
     /**
      * @var string $string

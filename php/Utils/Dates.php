@@ -2,7 +2,7 @@
 
 namespace Utils;
 
-class Date
+class Dates
 {
     /**
      * Get number of days in a given quarter

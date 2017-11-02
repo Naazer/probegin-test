@@ -2,7 +2,7 @@
 
 namespace Utils;
 
-class Array
+class Arrays
 {
     /**
      * @var array $array
