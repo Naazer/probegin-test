@@ -13,7 +13,7 @@ class Strings
      * Change case of a given string to kebeb
      *
      * @example this-is-kebab-case
-     * @return string Kebab-cased string
+     * @return string kebab-cased string
      * @throws \DomainException
      */
     public function kebabCase(): string
