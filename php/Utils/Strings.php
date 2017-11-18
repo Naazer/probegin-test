@@ -31,6 +31,7 @@ class Strings
     public function countCharOccurrence(string $char): int
     {
         // @TODO: implement body and cover with tests
+        // Note: upper- and lowercase letters are considered the same character,
     }
 
     /**
@@ -43,6 +44,8 @@ class Strings
     public function mostFrequentChars(string $char): string
     {
         // @TODO: implement body and cover with tests
+        // Note: upper- and lowercase letters are considered the same character,
+        // but the function should return the correct case for the initial letter
     }
 
     /**
