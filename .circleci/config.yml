@@ -3,9 +3,10 @@
 # Check https://circleci.com/docs/2.0/language-php/ for more details
 #
 version: 2
-general:
-  build_dir: php
+
 jobs:
+  general:
+    build_dir: php
   build:
     docker:
       # specify the version you desire here
@@ -20,6 +21,7 @@ jobs:
 
     steps:
       - checkout
+      - cd php
 
       # Download and cache dependencies
       - restore_cache:
