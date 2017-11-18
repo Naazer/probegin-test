@@ -9,7 +9,7 @@ interface Cipher
      *
      * @param  string $string Input
      * @return string Encoded string
-     * @throws \InvalidArgumnetException
+     * @throws \LogicException
      */
     public static function encode(string $string): string;
 
@@ -18,7 +18,7 @@ interface Cipher
      *
      * @param  string $string Encoded value
      * @return string Decoded string
-     * @throws \InvalidArgumnetException
+     * @throws \LogicException
      */
     public static function decode(string: $string): string;
 

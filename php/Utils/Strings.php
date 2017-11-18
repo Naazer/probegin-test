@@ -22,13 +22,13 @@ class Strings
     }
 
     /**
-     * Count char occurences in the given string
+     * Count char occurrences in the given string
      *
      * @param  string $char Needle
-     * @return int Count of occurence
+     * @return int Count of occurrence
      * @throws \InvalidArgumentException
      */
-    public function countCharOccurence(string $char): int
+    public function countCharOccurrence(string $char): int
     {
         // @TODO: implement body and cover with tests
     }
@@ -63,8 +63,8 @@ class Strings
      * @example
      * <code>
      *   aaa       -> a3
-     *   apple     -> a1e1p2
-     *   apple pie -> a1e2i1l1p3
+     *   apple     -> a1p2l1e1
+     *   apple pie -> a1p3l1e2i1
      * </code>
      * @return string
      */
