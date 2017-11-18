@@ -3,6 +3,8 @@
 # Check https://circleci.com/docs/2.0/language-php/ for more details
 #
 version: 2
+general:
+  build_dir: php
 jobs:
   build:
     docker:
@@ -14,7 +16,7 @@ jobs:
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # - image: circleci/mysql:9.4
 
-    working_directory: ~/repo/php
+    working_directory: ~/repo
 
     steps:
       - checkout
