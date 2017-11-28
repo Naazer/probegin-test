@@ -20,60 +20,58 @@ class Arrays
      */
     public function findPair(int $sum)
     {
-		if($sum < 0) {
-			throw new \DomainException('Sum must be >= 0');
-		}
-		$result = [];
-		for($i = 0; $i < count($this->array); $i++)
-		{
-			if($this->array[$i] > $sum) { // this is not a pair element as it is greater than the sum
-				continue;
-			}
+        if ($sum < 0) {
+            throw new \DomainException('Sum must be >= 0');
+        }
+        $result = [];
+        for ($i = 0; $i < count($this->array); $i++) {
+            if ($this->array[$i] > $sum) { // this is not a pair element as it is greater than the sum
+                continue;
+            }
 
-			$result[] = $this->array[$i];
-			$match = $sum - $this->array[$i];
-			for($j = $i+1; $j < count($this->array); $j++)
-			{
-				if($this->array[$j] == $match) { // found second element of the pair, return result
-					$result[] = $match;
-					return $result;
-				}
-			}
-		}
-		// no pairs found
-		return false;
+            $result[] = $this->array[$i];
+            $match = $sum - $this->array[$i];
+            for ($j = $i+1; $j < count($this->array); $j++) {
+                if ($this->array[$j] == $match) { // found second element of the pair, return result
+                    $result[] = $match;
+                    return $result;
+                }
+            }
+        }
+        // no pairs found
+        return false;
     }
 
-	/**
-	 * Setter method for the internal array
-	 * @param array $data
-	 * @return $this
-	 */
-	public function setValue(array $data)
-	{
-		$this->array = $data;
-		$this->checkArray();
-		return $this;
-	}
+    /**
+     * Setter method for the internal array
+     * @param array $data
+     * @return $this
+     */
+    public function setValue(array $data)
+    {
+        $this->array = $data;
+        $this->checkArray();
+        return $this;
+    }
 
 
-	/**
-	 * Throws an exception if array consists of not only numbers, or some of them are not whole
-	 * @throws \DomainException
-	 */
-	private function checkArray()
-	{
-		foreach ($this->array as $key => $element) {
-			if(!is_numeric($element)) {
-				throw new \DomainException(sprintf('Element array #%d is not a number', $key));
-			}
-			if(intval($element) != $element) {
-				throw new \DomainException(sprintf('Element array #%d is not an integer', $key));
-			}
-		}
-	}
+    /**
+     * Throws an exception if array consists of not only numbers, or some of them are not whole
+     * @throws \DomainException
+     */
+    private function checkArray()
+    {
+        foreach ($this->array as $key => $element) {
+            if (!is_numeric($element)) {
+                throw new \DomainException(sprintf('Element array #%d is not a number', $key));
+            }
+            if (intval($element) != $element) {
+                throw new \DomainException(sprintf('Element array #%d is not an integer', $key));
+            }
+        }
+    }
 
-	/**
+    /**
      * Sort by custom function
      *
      * @param  callable $sorting Function providing an algorythm
@@ -94,5 +92,4 @@ class Arrays
     {
         // @TODO: create body of the function and cover with tests
     }
-
 }
