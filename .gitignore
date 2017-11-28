@@ -1,0 +1,3 @@
+/php/vendor/
+/.php_cs.cache
+/php/test.log
