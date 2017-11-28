@@ -20,10 +20,42 @@ class Arrays
      */
     public function findPair(int $sum)
     {
-        // @TODO: create body of the function and cover with tests
+		if($sum <= 0) {
+			throw new \DomainException('Sum must be > 0');
+		}
+		$result = [];
+		for($i = 0; $i < length($this->array); $i++)
+		{
+			if($this->array[$i] > $sum) {
+				continue;
+			}
+
+			$result[] = $this->array[$i];
+			$match = $sum = $this->array[$i];
+			for($j = $i; $i < length($this->array); $j++)
+			{
+				if($this->array[$j] == $match) {
+					$result[] = $match;
+					return $result;
+				}
+			}
+		}
+		// no pairs found
+		return false;
     }
 
-    /**
+	/**
+	 * Setter method for the internal array
+	 * @param array $data
+	 * @return $this
+	 */
+	public function setValue(array $data)
+	{
+		$this->array = $data;
+		return $this;
+	}
+
+		/**
      * Sort by custom function
      *
      * @param  callable $sorting Function providing an algorythm
