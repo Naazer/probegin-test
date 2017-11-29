@@ -47,26 +47,9 @@ class Arrays
     public function setValue(array $data)
     {
         $this->array = $data;
-        $this->checkArray();
         return $this;
     }
 
-
-    /**
-     * Throws an exception if array consists of not only numbers, or some of them are not whole
-     * @throws \DomainException
-     */
-    private function checkArray()
-    {
-        foreach ($this->array as $key => $element) {
-            if (!is_numeric($element)) {
-                throw new \DomainException(sprintf('Element array #%d is not a number', $key));
-            }
-            if (intval($element) != $element) {
-                throw new \DomainException(sprintf('Element array #%d is not an integer', $key));
-            }
-        }
-    }
 
     /**
      * Sort by custom function
