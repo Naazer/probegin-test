@@ -20,16 +20,13 @@ class Arrays
      */
     public function findPair(int $sum)
     {
-        if ($sum < 0) {
-            throw new \DomainException('Sum must be >= 0');
-        }
         $result = [];
         for ($i = 0; $i < count($this->array); $i++) {
-            if ($this->array[$i] > $sum) { // this is not a pair element as it is greater than the sum
-                continue;
-            }
+			if(is_numeric($this->array[$i])) { // element is not a number and cannot be cast to a number
+				throw new \DomainException(sprintf('A[%d] is not a number: %s', $i, typeof($this->array[$i])));
+			}
 
-            $result[] = $this->array[$i];
+            $result[] = $this->array[$i]; // assume first sum element
             $match = $sum - $this->array[$i];
             for ($j = $i+1; $j < count($this->array); $j++) {
                 if ($this->array[$j] == $match) { // found second element of the pair, return result
