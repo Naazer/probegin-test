@@ -28,8 +28,8 @@ jobs:
           - v1-dependencies-
 
       - run:
-        working_directory: ./php
-        command: composer install -n --prefer-dist
+          working_directory: ./php
+          command: composer install -n --prefer-dist
 
       - save_cache:
           paths:
@@ -38,5 +38,5 @@ jobs:
 
       # run tests!
       - run:
-        working_directory: ./php
-        command: phpunit
+          working_directory: ./php
+          command: phpunit
