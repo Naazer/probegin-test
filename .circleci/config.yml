@@ -8,7 +8,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/php:7.1.12-cli-alpine
+      - image: circleci/php:7.1.12-cli
  
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
