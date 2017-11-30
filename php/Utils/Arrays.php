@@ -12,7 +12,7 @@ class Arrays
     /**
      * Given an array of integers and a desired sum,
      * return the first two occuring elements which could be added together to form the desired result.
-     * @example Utils\Array::findPair(7, [1, 4, 5, 3, 6]) would return [4, 3] or [1, 6]
+     * @example Utils\Arrays::findPair(7, [1, 4, 5, 3, 6]) would return [4, 3] or [1, 6]
      *
      * @param  int   $sum  Desired sum
      * @return array|bool Array of mathing elements or FALSE

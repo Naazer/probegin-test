@@ -49,7 +49,7 @@ class Strings
     }
 
     /**
-     * Get first unique (or less occured) char for the given string
+     * Get first unique (or less occurred) char for the given string
      *
      * @return string Char
      */
