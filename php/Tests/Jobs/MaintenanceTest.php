@@ -39,7 +39,7 @@ class MaintenanceTest extends TestCase
         $this->mockJob
             ->shouldReceive('lastCheck')->once()->withNoArgs()->andReturn(0);
         $this->mockJob
-            ->shouldReceive('setChecked')->once()->with(\Mockery::type('integer'))->andReturnUndefined();
+            ->shouldReceive('setChecked')->never();
         $this->mockJob
             ->shouldReceive('isLocked')->once()->withNoArgs()->andReturn(false);
         $this->mockJob
@@ -178,8 +178,6 @@ class MaintenanceTest extends TestCase
         $this->mockJob
             ->shouldReceive('isLocked')->once()->andReturnFalse();
         $this->mockJob
-            ->shouldReceive('setChecked')->once()->with(\Mockery::type('integer'))->andReturnUndefined();
-        $this->mockJob
             ->shouldReceive('delete')->once()->withNoArgs()->andReturnTrue();
 
         $this->maintenance->cleanup($this->mockJob);
@@ -206,26 +204,5 @@ class MaintenanceTest extends TestCase
         array_walk_recursive($data, function (&$v) use ($t) { $v = $t - $v*60;});
 
         return $data;
-    }
-
-    public function testCleanupWithLogicException()
-    {
-        $t = time();
-        $this->mockJob
-            ->shouldReceive('lastCheck')->twice()->withNoArgs()->andReturn($t - 300);
-        $this->mockJob
-            ->shouldReceive('jobStarted')->twice()->withNoArgs()->andReturn($t - 180);
-        $this->mockJob
-            ->shouldReceive('isLocked')->never();
-        $this->mockJob
-            ->shouldReceive('setChecked')->never();
-        $this->mockJob
-            ->shouldReceive('delete')->never();
-
-        self::expectException(\LogicException::class);
-
-        $this->maintenance->cleanup($this->mockJob);
-
-        self::assertTrue(true);
     }
 }

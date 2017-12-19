@@ -41,8 +41,9 @@ class Maintenance
     {
         $currentTime = time();
         if ($job->lastCheck() === 0) {
-            $job->setChecked($currentTime);
-            $job->isLocked() || $job->delete();
+            if ($job->isLocked() || !$job->delete()) {
+                $job->setChecked($currentTime);
+            }
             return;
         }
         /** @var int $deltaCurrent time difference in minutes between start job and current timestamp */
@@ -54,16 +55,14 @@ class Maintenance
         }
         /** @var int $deltaChecked time difference in minutes between last check and current timestamp */
         $deltaChecked = intdiv($job->lastCheck() - $job->jobStarted(), 60);
-        if ($deltaChecked < 0) {
-            throw new \LogicException('Try to check job that was checked before');
-        }
         foreach (self::RANGES as $i => $hours) {
             if ($deltaChecked > $hours) {
                 continue;
             }
             if ($deltaCurrent >= $hours) { // The current date is in the next range so try delete the job
-                $job->setChecked($currentTime);
-                $job->isLocked() || $job->delete();
+                if ($job->isLocked() || !$job->delete()) {
+                    $job->setChecked($currentTime);
+                }
                 break;
             }
         }
