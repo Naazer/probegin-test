@@ -41,9 +41,7 @@ class Maintenance
     {
         $currentTime = time();
         if ($job->lastCheck() === 0) {
-            if ($job->isLocked() || !$job->delete()) {
-                $job->setChecked($currentTime);
-            }
+            $this->postpone($job, $currentTime);
             return;
         }
         /** @var int $deltaCurrent time difference in minutes between start job and current timestamp */
@@ -60,11 +58,22 @@ class Maintenance
                 continue;
             }
             if ($deltaCurrent >= $hours) { // The current date is in the next range so try delete the job
-                if ($job->isLocked() || !$job->delete()) {
-                    $job->setChecked($currentTime);
-                }
+                $this->postpone($job, $currentTime);
                 break;
             }
+        }
+    }
+
+    /**
+     * If job wasn't locked we remove it.
+     * If job locked or cant be removed we should postpone it
+     * @param Job $job
+     * @param $currentTime
+     */
+    private function postpone(Job $job, $currentTime): void
+    {
+        if ($job->isLocked() || !$job->delete()) {
+            $job->setChecked($currentTime);
         }
     }
 }
