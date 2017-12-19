@@ -47,7 +47,6 @@ class Maintenance
         /** @var int $deltaCurrent time difference in minutes between start job and current timestamp */
         $deltaCurrent = intdiv($currentTime - $job->jobStarted(), 60);
         if ($deltaCurrent > 600) {
-            $job->setChecked($currentTime);
             $job->delete(true);
             return;
         }

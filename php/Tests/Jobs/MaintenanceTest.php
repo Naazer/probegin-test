@@ -107,8 +107,6 @@ class MaintenanceTest extends TestCase
         $this->mockJob
             ->shouldReceive('isLocked')->never();
         $this->mockJob
-            ->shouldReceive('setChecked')->once()->with(\Mockery::type('integer'))->andReturnUndefined();
-        $this->mockJob
             ->shouldReceive('delete')->once()->with(true);
 
         $this->maintenance->cleanup($this->mockJob);
