@@ -20,6 +20,12 @@ class ArraysTest extends TestCase
         $this->arraysFixture = new Arrays();
     }
 
+    public function testSortByUnknownMethod()
+    {
+        $this->expectException(\TypeError::class);
+        $this->arraysFixture->sortBy([$this->arraysFixture, 'nazarSort']);
+    }
+
     /**
      * @dataProvider provider
      * @param array $array

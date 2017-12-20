@@ -40,12 +40,6 @@ class Arrays
      */
     public function sortBy(callable $sorting): array
     {
-        if (!is_callable($sorting)) {
-            throw new \DomainException(sprintf(
-                'Sorting method <%s> that you provided are not realized or unknown', $sorting
-            ));
-        }
-
         call_user_func($sorting);
 
         return $this->array;
